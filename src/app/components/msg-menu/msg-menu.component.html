@@ -1,0 +1,21 @@
+<ion-tab-bar slot="bottom">
+
+  <ion-tab-button routerLink="/msg/inbox">
+    <ion-icon name="mail-unread-sharp"></ion-icon>
+    <ion-label>Recebidos</ion-label>
+
+    <!-- 18.1) Exibe total de mensagens não lidas -->
+    <ion-badge *ngIf="totalItems">{{ totalItems }}</ion-badge>
+  </ion-tab-button>
+
+  <ion-tab-button routerLink="/msg/send">
+    <ion-icon name="send-sharp"></ion-icon>
+    <ion-label>Enviar</ion-label>
+  </ion-tab-button>
+
+  <ion-tab-button routerLink="/msg/outbox">
+    <ion-icon name="mail-sharp"></ion-icon>
+    <ion-label>Enviados</ion-label>
+  </ion-tab-button>
+
+</ion-tab-bar>

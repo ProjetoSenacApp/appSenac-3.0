@@ -1,0 +1,128 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Seu Perfil</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="ion-padding" *ngIf="userData && userProfile">
+
+    <ion-card>
+
+      <ion-card-header>
+        <ion-card-title>Perfil do Login</ion-card-title>
+      </ion-card-header>
+      <img [src]="[userData.photoURL]" [alt]="[userData.displayName]">
+      <ion-card-content>
+        <h3 style="font-size: 1.2rem; font-weight: bold;">{{ userData.displayName }}</h3>
+        <ion-grid>
+          <ion-row>
+            <ion-col>{{ userData.email }}</ion-col>
+            <ion-col class="ion-text-end">
+
+              <!-- 8.1) Editar perfil da rede social -->
+              <ion-button size="small" fill="clear" (click)="editProviderProfile()">
+                <ion-icon name="create"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+
+      <hr>
+      <ion-card-header>
+        <ion-card-title>Dados Pessoais</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ul>
+          <li>
+            <ion-text color="primary">Nome:</ion-text>{{ userProfile.name }}
+          </li>
+          <li>
+            <ion-text color="primary">CPF:</ion-text>{{ userProfile.cpf }}
+          </li>
+
+          <!-- 16.1) Data de nascimento formatada -->
+          <li>
+            <ion-text color="primary">Nascimento:</ion-text>{{ userProfile.birth | date: 'dd/MM/yyyy' }}
+          </li>
+          <li>
+            <ion-text color="primary">Gênero:</ion-text>{{ userProfile.gender }}
+          </li>
+        </ul>
+      </ion-card-content>
+
+      <hr>
+      <ion-card-header>
+        <ion-card-title>Dados de Contato</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ul>
+          <li>
+            <ion-text color="primary">E-mail:</ion-text>
+            {{ userProfile.email }}
+          </li>
+          <li>
+            <ion-text color="primary">Telefone Residêncial:</ion-text>
+            {{ userProfile.homePhone }}
+          </li>
+          <li>
+            <ion-text color="primary">Telefone Celular:</ion-text>
+            {{ userProfile.cellPhone }}
+          </li>
+          <li>
+            <ion-text color="primary">WhatsApp</ion-text>
+            {{ userProfile.whatsApp }}
+          </li>
+        </ul>
+      </ion-card-content>
+
+      <hr>
+      <ion-card-header>
+        <ion-card-title>Outras Informações</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ul>
+          <li>
+            <ion-text color="primary">Seleção 1:</ion-text>
+            {{ userProfile.selectStatic }}
+          </li>
+          <li>
+            <ion-text color="primary">Seleção 2:</ion-text>
+            {{ userProfile.selectDynamic }}
+          </li>
+          <li>
+            <ion-text color="primary">Nível de Acesso:</ion-text>
+            {{ userProfile.type }}
+          </li>
+          <li>
+            <ion-text color="primary">Status</ion-text>
+            {{ userProfile.status }}
+          </li>
+        </ul>
+      </ion-card-content>
+
+    </ion-card>
+
+    <!-- 9.1) Botão para editar perfil -->
+    <ion-button expand="block" class="ion-no-margin ion-margin-vertical" routerLink="/user/edit">
+      <ion-icon name="create"></ion-icon>&nbsp;
+      Editar Perfil
+    </ion-button>
+
+    <!-- 16.1) Botão para excluir perfil -->
+    <ion-button expand="block" color="danger" class="ion-no-margin ion-margin-vertical" routerLink="/user/delete">
+      <ion-icon name="alert-circle"></ion-icon>&nbsp;
+      Apagar Conta
+    </ion-button>
+
+  </div>
+
+</ion-content>

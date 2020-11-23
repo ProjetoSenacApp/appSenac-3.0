@@ -1,0 +1,14 @@
+/* 3.1) Formata lista de botões */
+ion-content {
+    --background: url('/../assets/01.png') no-repeat center center / cover ;
+   
+}
+.login-table {
+    display: table;
+    margin : auto;
+    width  : 220px;
+}
+
+.login-table ion-label {
+    padding-left: 0.5rem;
+}

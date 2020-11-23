@@ -1,0 +1,47 @@
+<div *ngIf="messageForm">
+
+  <p class="ion-text-center">
+    <small>
+      <ion-text color="danger">Preencha todos os campos.</ion-text>
+    </small>
+  </p>
+
+  <form [formGroup]="messageForm" (ngSubmit)="messageSubmit()">
+
+    <ion-list lines="full" id="profileList" class="ion-no-padding">
+
+      <ion-item>
+        <ion-label for="userTo" position="floating" color="primary">Para:</ion-label>
+        <ion-input type="text" id="userTo" name="userTo" formControlName="userTo" readonly="true"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label for="subject" position="floating" color="primary">
+          Assunto:
+          <ion-text color="danger" *ngIf="messageForm.controls.subject.errors">
+            <small *ngIf="messageForm.controls.subject.errors.required">* Obrigatório</small>
+            <small *ngIf="messageForm.controls.subject.errors.minlength">* Inválido</small>
+          </ion-text>
+        </ion-label>
+        <ion-input type="text" id="subject" name="subject" formControlName="subject"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label for="message" position="floating" color="primary">
+          Mensagem:
+          <ion-text color="danger" *ngIf="messageForm.controls.message.errors">
+            <small *ngIf="messageForm.controls.message.errors.required">* Obrigatório</small>
+            <small *ngIf="messageForm.controls.message.errors.minlength">* Inválido</small>
+          </ion-text>
+        </ion-label>
+        <ion-textarea rows="10" type="text" id="message" name="message" formControlName="message"></ion-textarea>
+      </ion-item>
+
+    </ion-list>
+
+    <ion-button type="submit" expand="block" class="ion-margin-vertical" [disabled]="messageForm.invalid">{{ btnText }}
+    </ion-button>
+
+  </form>
+
+</div>

@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar>
+
+    <!-- 10.1) Menu e título -->
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Ler mensagem</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="ion-padding">
+
+    <div *ngIf="viewMsg">
+
+      <small [innerHTML]="viewMsg.interlocutor"></small><br>
+      <small>Em: {{ viewMsg.date | date: ['dd/MM/yyyy'] }} às {{ viewMsg.date | date: ['HH:mm'] }}.</small>
+      <hr>
+      <h4>{{ viewMsg.subject }}</h4>
+      <!-- 14.1) Adiciona separador -->
+      <hr>
+      <!-- 13.1) Exibe mensagem -->
+      <div>{{ viewMsg.message }}</div>
+      <hr>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col class="ion-text-left ion-no-padding">
+            <!-- 14.2) Botão [Responder] -->
+            <!-- 15.1) Link no botão [Responder] -->
+            <ion-button routerLink="/msg/reply/inbox/{{ msgParams.msgId }}">
+              <ion-icon name="send-outline"></ion-icon>&nbsp;Responder
+            </ion-button>
+          </ion-col>
+
+          <!-- 13.2) Botão apagar mensagem -->
+          <!-- 14.3) Botão [Apagar] -->
+          <ion-col class="ion-text-right ion-no-padding">
+            <ion-button (click)="app.msgDelete(userData.uid, msgParams.msgBox, msgParams.msgId)">
+              <ion-icon name="trash-outline"></ion-icon>&nbsp;Apagar
+            </ion-button>
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+      <!-- 18.1) Desabilita linha (comentar) -->
+      <!-- <hr> -->
+
+      <!-- 14.4) Botão [Caixa...] -->
+      <!-- 18.2) Desabilita botão (comentar) -->
+      <!-- <ion-button *ngIf="msgParams.msgBox == 'inbox'" expand="block" routerLink="/msg/inbox">
+        <ion-icon name="list-outline"></ion-icon>&nbsp;Caixa de entrada
+      </ion-button>
+      <ion-button *ngIf="msgParams.msgBox == 'outbox'" expand="block" routerLink="/msg/outbox">
+        <ion-icon name="list-outline"></ion-icon>&nbsp;Caixa de saída
+      </ion-button> -->
+
+    </div>
+
+  </div>
+
+</ion-content>
+
+<!-- 17.1) Menu de mensagens -->
+<app-msg-menu></app-msg-menu>

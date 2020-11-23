@@ -1,0 +1,37 @@
+ion-card {
+    margin: 1rem 0 auto 0;
+}
+
+ion-card img {
+    margin   : auto;
+    display  : block;
+    width    : 100%;
+    max-width: 320px;
+}
+
+ion-card ion-grid,
+ion-card ion-row,
+ion-card ion-col {
+    margin : 0;
+    padding: 0;
+}
+
+ion-card-content ul {
+    padding   : 0;
+    list-style: none;
+}
+
+ion-card-content ul li {
+    margin-bottom: .5rem;
+}
+
+ion-card-content ul li ion-text {
+    font-weight: bold;
+    display    : block;
+    font-size  : small;
+}
+
+ion-card hr {
+    border-bottom: 1px dotted grey;
+    margin: 0;
+}

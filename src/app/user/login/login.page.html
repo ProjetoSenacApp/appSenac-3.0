@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Login / Entrar</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="ion-padding">
+
+    <h2>Olá!</h2>
+
+    <h3>Para que você possa acessar os serviços deste aplicativo, é necessário estar logado(a)...</h3>
+   
+    <div class="login-table">
+
+      <h3 style="text-align: center">Entrar com:</h3>&nbsp;
+
+      <!-- 3.1) Botões de login com redes sociais -->
+
+      <ion-button expand="block" (click)="login('google')">
+        <ion-icon name="logo-google" slot="start"></ion-icon>
+        <ion-label>Google</ion-label>
+      </ion-button>
+
+      <!-- ... -->
+
+    </div>
+
+  </div>
+
+</ion-content>

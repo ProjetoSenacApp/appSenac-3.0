@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-toolbar>
+
+    <!-- 10.1) Menu e título -->
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Nova mensagem</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="ion-padding">
+
+    <!-- 17.2) Formulário de envio de mensagem -->
+    <div *ngIf="sendForm">
+
+      <p class="ion-text-center">
+        <small>
+          <ion-text color="danger">Preencha todos os campos.</ion-text>
+        </small>
+      </p>
+
+      <form [formGroup]="sendForm" (ngSubmit)="sendSubmit()">
+
+        <ion-list lines="full" id="profileList" class="ion-no-padding">
+
+          <ion-item>
+            <ion-label for="userTo" position="floating" color="primary">
+              Para:
+              <ion-text color="danger" *ngIf="sendForm.controls.userTo.errors">
+                <small *ngIf="sendForm.controls.userTo.errors.required">* Obrigatório</small>
+              </ion-text>
+            </ion-label>
+            <ion-select id="userTo" name="userTo" formControlName="userTo" placeholder="Selecione"
+              interface="action-sheet" ok-text="Ok" cancel-text="Cancela">
+              <span *ngFor="let user of usersList">
+
+                <!-- 18.1) Correção na variável -->
+                <ion-select-option *ngIf="user.id !== userData.uid" value="{{ user.uid}} ">{{ user.name }}</ion-select-option>
+              </span>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-label for="subject" position="floating" color="primary">
+              Assunto:
+              <ion-text color="danger" *ngIf="sendForm.controls.subject.errors">
+                <small *ngIf="sendForm.controls.subject.errors.required">* Obrigatório</small>
+                <small *ngIf="sendForm.controls.subject.errors.minlength">* Inválido</small>
+              </ion-text>
+            </ion-label>
+            <ion-input type="text" id="subject" name="subject" formControlName="subject"
+              placeholder="Assunto da mensagem"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label for="message" position="floating" color="primary">
+              Mensagem:
+              <ion-text color="danger" *ngIf="sendForm.controls.message.errors">
+                <small *ngIf="sendForm.controls.message.errors.required">* Obrigatório</small>
+                <small *ngIf="sendForm.controls.message.errors.minlength">* Inválido</small>
+              </ion-text>
+            </ion-label>
+            <ion-textarea rows="1" type="text" id="message" name="message" formControlName="message"
+              placeholder="Texto da mensagem" autoGrow="true"></ion-textarea>
+          </ion-item>
+
+        </ion-list>
+
+        <ion-button type="submit" expand="block" class="ion-margin-vertical" [disabled]="sendForm.invalid">
+          Enviar
+        </ion-button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</ion-content>
+
+<!-- 17.1) Menu de mensagens -->
+<app-msg-menu></app-msg-menu>

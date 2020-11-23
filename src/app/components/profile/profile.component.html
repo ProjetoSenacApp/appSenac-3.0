@@ -1,0 +1,188 @@
+<!-- 5.1) Só exibe form se estiver logado -->
+<div *ngIf="userData">
+
+  <!-- 5.2) Cumprimenta usuário logado -->
+  <h2>Olá {{ userData.displayName }}!</h2>
+
+  <p>{{ paragraph }}</p>
+  <p class="ion-text-center"><small>
+      <ion-text color="danger">Preencha todos os campos.</ion-text>
+    </small></p>
+
+  <form [formGroup]="profileForm" (ngSubmit)="profileSubmit()">
+    <ion-input type="hidden" id="id" name="id" formControlName="id"></ion-input>
+
+    <ion-list lines="full" id="profileList" class="ion-no-padding">
+
+      <div>Dados pessoais:</div>
+
+      <ion-item>
+        <ion-label for="name" position="floating" color="primary">
+          Nome completo:
+          <ion-text color="danger" *ngIf="profileForm.controls.name.errors">
+            <small *ngIf="profileForm.controls.name.errors.required">* Obrigatório</small>
+            <small *ngIf="profileForm.controls.name.errors.minlength">* Inválido</small>
+          </ion-text>
+        </ion-label>
+        <ion-input type="text" id="name" name="name" formControlName="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label for="birth" position="floating" color="primary">
+          Nascimento:
+          <ion-text color="danger" *ngIf="profileForm.controls.birth.errors">
+            <small *ngIf="profileForm.controls.birth.errors.under14years">* Deve ter 14 anos ou mais</small>
+          </ion-text>
+        </ion-label>
+        <ion-input type="date" id="birth" name="birth" formControlName="birth" placeholder="Exemplo: 27/11/1998">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label for="cpf" position="floating" color="primary">
+          CPF:
+          <ion-text color="danger" *ngIf="profileForm.controls.cpf.errors">
+            <small *ngIf="profileForm.controls.cpf.errors.required">* Obrigatório</small>
+            <small *ngIf="profileForm.controls.cpf.errors.pattern">* Inválido</small>
+          </ion-text>
+        </ion-label>
+        <ion-input type="text" id="cpf" name="cpf" formControlName="cpf" placeholder="Somente números"></ion-input>
+      </ion-item>
+
+      <!-- 6.4) Campo do tipo "radio"-->
+      <ion-list>
+        <ion-radio-group formControlName="gender" id="gender" name="gender">
+          <ion-list-header>
+            <ion-label color="primary" for="gender">
+              Gênero:
+
+              <!-- 6.5) Alerta de campo inválido -->
+              <ion-text color="danger" *ngIf="profileForm.controls.gender.errors">
+                <small *ngIf="profileForm.controls.gender.errors.required">* Obrigatório</small>
+              </ion-text>
+            </ion-label>
+          </ion-list-header>
+
+          <ion-item>
+            <ion-label>Não informar</ion-label>
+            <ion-radio slot="start" value="Não informar"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Feminino</ion-label>
+            <ion-radio slot="start" value="Feminino"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Masculino</ion-label>
+            <ion-radio slot="start" value="Masculino"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+
+      <hr>
+      <div>Contatos:</div>
+
+      <ion-item>
+        <ion-label for="email" position="floating" color="primary">
+          E-mail:
+          <ion-text color="danger" *ngIf="profileForm.controls.email.errors">
+            <small *ngIf="profileForm.controls.email.errors.required">* Obrigatório</small>
+            <small *ngIf="profileForm.controls.email.errors.email">* Inválido</small>
+          </ion-text>
+        </ion-label>
+        <ion-input type="text" id="email" name="email" formControlName="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label for="homePhone" position="floating" color="primary">
+          Tel. residencial:
+          <ion-text color="danger" *ngIf="profileForm.controls.homePhone.errors">
+            <small *ngIf="profileForm.controls.homePhone.errors.required">* Obrigatório</small>
+            <small *ngIf="profileForm.controls.homePhone.errors.pattern">* Inválido</small>
+          </ion-text>
+        </ion-label>
+        <ion-input type="text" id="homePhone" name="homePhone" formControlName="homePhone"
+          placeholder="Exemplo: (21) 2345-6789"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label for="cellPhone" position="floating" color="primary">
+          Tel. celular:
+          <ion-text color="danger" *ngIf="profileForm.controls.cellPhone.errors">
+            <small *ngIf="profileForm.controls.cellPhone.errors.required">* Obrigatório</small>
+            <small *ngIf="profileForm.controls.cellPhone.errors.pattern">* Inválido</small>
+          </ion-text>
+        </ion-label>
+        <ion-input type="text" id="cellPhone" name="cellPhone" formControlName="cellPhone"
+          placeholder="Exemplo: (21) 98765-4321"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label for="whatsApp" position="floating" color="primary">
+          WhatsApp:
+          <ion-text color="danger" *ngIf="profileForm.controls.whatsApp.errors">
+            <small *ngIf="profileForm.controls.whatsApp.errors.required">* Obrigatório</small>
+            <small *ngIf="profileForm.controls.whatsApp.errors.pattern">* Inválido</small>
+          </ion-text>
+        </ion-label>
+        <ion-input type="text" id="whatsApp" name="whatsApp" formControlName="whatsApp"
+          placeholder="Exemplo: (21) 98765-4321"></ion-input>
+      </ion-item>
+
+      <hr>
+      <div>Opções:</div>
+
+      <!-- 6.1) Lista de opções 'estática' -->
+      <!-- 10.1) Usando <ion-select interface="popover"... -->
+      <ion-item>
+        <ion-label for="selectStatic" position="floating" color="primary">
+          Seleção 1:
+
+          <!-- 6.6) Alerta de campo inválido -->
+          <ion-text color="danger" *ngIf="profileForm.controls.selectStatic.errors">
+            <small *ngIf="profileForm.controls.selectStatic.errors.required">* Obrigatório</small>
+          </ion-text>
+        </ion-label>
+        <ion-select interface="popover" formControlName="selectStatic" placeholder="Selecione" id="selectStatic"
+          name="selectStatic">
+          <ion-select-option value="Opção 1">Opção 1</ion-select-option>
+          <ion-select-option value="Opção 2">Opção 2</ion-select-option>
+          <ion-select-option value="Opção 3">Opção 3</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- 6.2) Lista de opções 'dinâmica', obtida do Firestore -->
+      <!-- 9.1) Lista de opções 'dinâmica', obtida do Firestore (Ajuste no  nome da variável) -->
+      <!-- 10.2) Usando <ion-select interface="popover"... -->
+      <ion-item *ngIf="selectDynamic">
+        <ion-label for="selectDynamic" position="floating" color="primary">
+          Seleção 2:
+
+          <!-- 6.7) Alerta de campo inválido -->
+          <ion-text color="danger" *ngIf="profileForm.controls.selectDynamic.errors">
+            <small *ngIf="profileForm.controls.selectDynamic.errors.required">* Obrigatório</small>
+          </ion-text>
+        </ion-label>
+        <ion-select interface="popover" formControlName="selectDynamic" placeholder="Selecione" id="selectDynamic"
+          name="selectDynamic">
+
+          <!-- 6.3) Lista as opções que "vieram" do Firestore -->
+          <ion-select-option *ngFor="let select of selectDynamic" value="{{ select.option }}">
+            {{ select.option }}
+          </ion-select-option>
+
+        </ion-select>
+      </ion-item>
+
+    </ion-list>
+
+    <ion-button type="submit" expand="block" class="ion-margin-vertical" [disabled]="profileForm.invalid">{{ btnText }}
+    </ion-button>
+
+    <!-- <div>{{ profileForm.value | json}}</div> -->
+    <!-- <div>{{ profileForm.valid | json }}</div> -->
+
+  </form>
+
+</div>

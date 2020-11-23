@@ -1,0 +1,7 @@
+{
+  "name": "fireuser01",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

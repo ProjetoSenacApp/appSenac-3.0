@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Início</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="ion-padding">
+
+    <!-- 3.1) Exibe nome (displayName) do usuário se ele está logado -->
+    <h2>Olá<span *ngIf="userData"> {{ userData.displayName }}</span>!</h2>
+
+    <div *ngIf="userData" >
+     <ion-button>Carousel</ion-button>
+    </div>
+
+   
+
+    <!-- 10.1) Botão de login para usuário não logado -->
+    <div *ngIf="!userData" class="ion-text-center">
+      <h3>Logue-se!</h3>
+      <p>Para usar todos os recursos deste aplicativo, você precisa se identificar.</p>
+      <ion-button routerLink="/user/login">
+        <ion-icon name="log-in" slot="start"></ion-icon>&nbsp;
+        Entrar / Login
+      </ion-button>
+    </div>
+
+  </div>
+ 
+</ion-content>
+ <ion-footer class="sociais" *ngIf="userData" class="ion-no-border">
+    <ion-toolbar>
+      <ion-button>sd</ion-button>
+      <a class="icone" href="http://www.facebook.com">Facebook</a>
+      <ion-button>sd</ion-button>
+      <ion-button>sd</ion-button>
+      <ion-button>sd</ion-button>
+      <ion-icon>s</ion-icon>
+     
+    </ion-toolbar>
+    <h5 style="text-align: center;">Ulib© 2020</h5>
+  </ion-footer>

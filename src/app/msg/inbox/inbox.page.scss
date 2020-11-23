@@ -1,0 +1,30 @@
+/* 14.1) Formata o grid das mesagens */
+ion-grid {
+    margin-top: 1rem;
+}
+
+ion-row ion-col:first-child {
+    text-align: center;
+    background: #eee;
+    color     : #333;
+    padding   : .2\rem;
+}
+
+/* 18.1) Estiliza mensagens lidas de forma diferente */
+ion-row ion-col.readed:first-child {
+    background: #888;
+}
+
+ion-grid small {
+    display   : block;
+    margin-top: .2rem;
+}
+
+ion-row {
+    margin: 1rem 0;
+}
+
+ion-col div {
+    margin-bottom: .5rem;
+    font-weight  : bold;
+}

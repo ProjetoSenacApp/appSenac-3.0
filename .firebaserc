@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "ionic-firebase-exemplo-01": {
+      "hosting": {
+        "app": [
+          "ionic-firebase-exemplo-01"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+
+    <!-- 10.1) Menu e título -->
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Caixa de Entrada</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- 14.1) Lista mensagens recebidas -->
+  <div class="ion-padding">
+
+    <p>Mensagens recebidas:</p>
+
+    <ion-grid class="allMessages" *ngIf="allMessages?.length > 0">
+
+      <ion-row *ngFor="let msg of allMessages">
+
+        <!-- 18.2) Estiliza mensagens lidas de forma diferente -->
+        <ion-col size="1" title="{{ msg.status }}" [ngClass]="{'readed' : msg.status !== 'Não lida'}">
+          <ion-icon name="{{msg.statusIcon}}"></ion-icon>
+        </ion-col>
+        <ion-col>
+          <div><a routerLink="/msg/view/inbox/{{ msg.msgId }}">{{ msg.subject }}</a></div>
+          <small>De <strong>{{ msg.fromName }}</strong></small>
+          <small>
+            Em <strong>{{ msg.date | date: ['dd/MM/yyyy, HH:mm'] }}.</strong>
+            &nbsp;|&nbsp; {{ msg.status }}
+          </small>
+        </ion-col>
+
+      </ion-row>
+
+    </ion-grid>
+
+    <!-- 18.1) Se não exitem mensagens à exibir -->
+    <p class="ion-text-center" *ngIf="allMessages?.length == 0">Nenhuma mensagem...</p>
+
+  </div>
+
+</ion-content>
+
+<!-- 17.1) Menu de mensagens -->
+<app-msg-menu></app-msg-menu>
