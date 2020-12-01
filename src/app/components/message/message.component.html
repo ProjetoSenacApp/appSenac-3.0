@@ -34,7 +34,11 @@
             <small *ngIf="messageForm.controls.message.errors.minlength">* Inválido</small>
           </ion-text>
         </ion-label>
-        <ion-textarea rows="10" type="text" id="message" name="message" formControlName="message"></ion-textarea>
+
+        <!-- 19.1) Ajustes visuais (autoGrow e placeholder) -->
+        <ion-textarea type="text" id="message" name="message" formControlName="message" autoGrow="true"
+          placeholder="Texto da resposta">
+        </ion-textarea>
       </ion-item>
 
     </ion-list>

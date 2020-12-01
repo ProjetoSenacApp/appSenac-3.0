@@ -13,6 +13,31 @@
 
 <ion-content>
 
+  <!-- 21.1) Lista mensagens recebidas -->
+  <div class="ion-padding">
+
+    <p>Mensagens enviadas:</p>
+
+    <ion-grid class="allMessages" *ngIf="allMessages?.length > 0">
+
+      <ion-row *ngFor="let msg of allMessages">
+        <ion-col size="1">
+          <ion-icon name="{{msg.statusIcon}}"></ion-icon>
+        </ion-col>
+        <ion-col>
+          <div><a routerLink="/msg/view/outbox/{{ msg.msgId }}">{{ msg.subject }}</a></div>
+          <small>De <strong>{{ msg.fromName }}</strong></small>
+          <small>Em <strong>{{ msg.date | date: ['dd/MM/yyyy, HH:mm'] }}.</strong></small>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+
+    <!-- 18.1) Se não exitem mensagens à exibir -->
+    <p class="ion-text-center" *ngIf="allMessages?.length == 0">Nenhuma mensagem...</p>
+
+  </div>
+
 </ion-content>
 
 <!-- 17.1) Menu de mensagens -->

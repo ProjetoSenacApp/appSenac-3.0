@@ -137,7 +137,7 @@
       <!-- 10.1) Usando <ion-select interface="popover"... -->
       <ion-item>
         <ion-label for="selectStatic" position="floating" color="primary">
-          Seleção 1:
+          Unidade:
 
           <!-- 6.6) Alerta de campo inválido -->
           <ion-text color="danger" *ngIf="profileForm.controls.selectStatic.errors">
@@ -146,9 +146,9 @@
         </ion-label>
         <ion-select interface="popover" formControlName="selectStatic" placeholder="Selecione" id="selectStatic"
           name="selectStatic">
-          <ion-select-option value="Opção 1">Opção 1</ion-select-option>
-          <ion-select-option value="Opção 2">Opção 2</ion-select-option>
-          <ion-select-option value="Opção 3">Opção 3</ion-select-option>
+          <ion-select-option value="Santa Luzia">Santa Luzia</ion-select-option>
+          <ion-select-option value="Botafogo">Botafogo</ion-select-option>
+          <ion-select-option value="Copacabana">Copacabana</ion-select-option>
         </ion-select>
       </ion-item>
 
@@ -157,7 +157,7 @@
       <!-- 10.2) Usando <ion-select interface="popover"... -->
       <ion-item *ngIf="selectDynamic">
         <ion-label for="selectDynamic" position="floating" color="primary">
-          Seleção 2:
+          Outros:
 
           <!-- 6.7) Alerta de campo inválido -->
           <ion-text color="danger" *ngIf="profileForm.controls.selectDynamic.errors">
@@ -167,11 +167,9 @@
         <ion-select interface="popover" formControlName="selectDynamic" placeholder="Selecione" id="selectDynamic"
           name="selectDynamic">
 
-          <!-- 6.3) Lista as opções que "vieram" do Firestore -->
-          <ion-select-option *ngFor="let select of selectDynamic" value="{{ select.option }}">
-            {{ select.option }}
-          </ion-select-option>
-
+          <ion-select-option value="Opção 1">Opção 1</ion-select-option>
+          <ion-select-option value="Opção 2">Opção 2</ion-select-option>
+          <ion-select-option value="Opção 3">Opção 3</ion-select-option>
         </ion-select>
       </ion-item>
 

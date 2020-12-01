@@ -24,7 +24,7 @@
       <!-- 14.1) Adiciona separador -->
       <hr>
       <!-- 13.1) Exibe mensagem -->
-      <div>{{ viewMsg.message }}</div>
+      <div class="msgBody">{{ viewMsg.message }}</div>
       <hr>
 
       <ion-grid>
@@ -41,7 +41,9 @@
           <!-- 14.3) Botão [Apagar] -->
           <ion-col class="ion-text-right ion-no-padding">
             <ion-button (click)="app.msgDelete(userData.uid, msgParams.msgBox, msgParams.msgId)">
-              <ion-icon name="trash-outline"></ion-icon>&nbsp;Apagar
+              
+              <!-- 19.1) Ajuste na visualização (removido texto do botão) -->
+              <ion-icon name="trash-outline"></ion-icon>
             </ion-button>
           </ion-col>
 
